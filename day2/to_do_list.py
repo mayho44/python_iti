@@ -89,15 +89,15 @@ def update():
     print("please enter a valid task number")
 
 def check():
- if len(to_do_list) == 0:
+ if not to_do_list:
   print("----------------------------")
   print("can't perform this operation because your queue is empty")
-  
   return
+ 
  global nums_of_checked 
  while(True):
   if(nums_of_checked == len(to_do_list)):
-   print("all tasks are checked: ")
+   print("*********all tasks are checked************ ")
    show()
    break
   task_check = input("enter the number of the task you want to check: ")
@@ -114,7 +114,6 @@ def check():
   
  
  
-# show()
 def operations():
  print("avaliable to do list operations : ")
  ops = ("show","add","delete", "update","check", "stop")
@@ -122,36 +121,39 @@ def operations():
   index += 1
   print(str(index) + " : " + value)
  
- while(True):
-  query = input("enter your operation : ")
-  if query.isdigit() and 1<= int(query) <= 6:
-   break
-  else : print("enter a valid operation number: ")
- while(True):
-  match query:
-   case "1":
-    show()
-    print("----------------------------")
-    operations()
-   case "2":
-    add()
-    print("----------------------------")
-    operations()
-   case "3":
-    delete()
-    print("----------------------------")
-    operations()
-   case "4":
-    update()
-    print("----------------------------")
-    operations()
-   case "5":
-    check()
-    print("----------------------------")
-    operations()
-   case "6":
+while(True):
+  # flag = False
+  operations()
+  while(True):
+   query = input("enter your operation : ")
+   if query.isdigit() and 1<= int(query) <= 6:
     break
-operations()
+   else : print("enter a valid operation number: ")
+  match query:
+    case "1":
+     show()
+     print("----------------------------")
+
+    case "2":
+     add()
+     print("----------------------------")
+
+    case "3":
+     delete()
+     print("----------------------------")
+
+    case "4":
+     update()
+     print("----------------------------")
+
+    case "5":
+     check()
+     print("----------------------------")
+
+    case "6":
+     flag = True
+     break
+  
 
 
 
@@ -173,7 +175,6 @@ operations()
 
 
   
-
 
 
 
